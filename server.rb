@@ -11,6 +11,8 @@ class Image
 
 end
 
+$redis = Redis.new(:url => ENV['REDISTOGO_URL'])
+
 configure do
   MongoMapper.setup({'production' => {'uri' => ENV['MONGOHQ_URL']}}, 'production')
 end
@@ -43,8 +45,12 @@ def process_subscription(body, signature)
   fail Instagram::InvalidSignature unless signature
 
   Instagram.process_subscription(body, signature: signature) do |handler|
-    handler.on_user_changed do |user_id, data|
-      # do something
+    handler.on_tag_changed do |tag_id, _|
+      return if tag_id != ENV['TAG']
+      medias = Instagram.tag_recent_media(tag_id, min_tag_id: $redis.get('min_tag_id'))
+      min_tag_id = medias.pagination[:min_tag_id]
+      $redis.set('min_tag_id', min_tag_id) if min_tag_id
+      puts "min_tag_id: #{min_tag_id}"
     end
   end
 end
