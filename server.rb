@@ -32,7 +32,7 @@ get '/' do
 end
 
 get '/map' do
-  erb :map, :locals => { :images => Image.all }
+  erb :map, :locals => { :images => Image.all, :min_tag_id => $redis.get 'min_tag_id' }
 end
 
 # Verifies subscription (http://instagram.com/developer/realtime/)
