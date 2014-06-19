@@ -59,7 +59,7 @@ def process_subscription(body, signature)
       min_tag_id = $redis.get 'min_tag_id'
       
       if min_tag_id
-        medias = Instagram.tag_recent_media(tag_id, :min_tag_id => min_tag_id)
+        medias = Instagram.tag_recent_media(tag_id, 'min_tag_id' => min_tag_id)
       else
         medias = Instagram.tag_recent_media(tag_id)
       end
