@@ -25,6 +25,7 @@
       /* Margin bottom by footer height */
       margin-bottom: 60px;
     }
+    
     #footer {
       position: absolute;
       bottom: 0;
@@ -36,10 +37,12 @@
     
     #map { height: 580px; }
     
-    .title {
+    p.title {
       font-size: 15px;
       line-height: 15px;
       font-weight: bolder;
+      margin: 0px;
+      padding: 0px;
     }
 
     .container {
@@ -79,13 +82,11 @@
         
         <% images.each do |image| %>
         var marker = L.marker([<%= image.location['latitude'] %>, <%= image.location['longitude'] %>]).addTo(map);
-        marker.bindPopup("<p class='title'><%= image.user['username'] %></p><br /><img src=<%= image.images['thumbnail']['url'] %> height='150px' width='150px'>");
+        marker.bindPopup("<p class='title'><%= image.user['username'] %></p><br /><a href='<%= image.data['link'] %>' %><img src=<%= image.images['thumbnail']['url'] %> height='150px' width='150px'></a>");
         <% end %>
       </script>
-      
-      
     </div>
-    
+
 
     <div id="footer">
       <div class="container">
