@@ -3,8 +3,8 @@ require './server.rb'
 
 task :configure do
   Instagram.configure do |config|
-    config.client_id = ENV['CLIENT_ID']
-    config.client_secret = ENV['CLIENT_SECRET']
+    config.client_id = ENV['INSTAGRAM_CLIENT_ID']
+    config.client_secret = ENV['INSTAGRAM_CLIENT_SECRET']
   end
 end
 

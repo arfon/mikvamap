@@ -43,16 +43,7 @@ def process_subscription(body, signature)
 
   Instagram.process_subscription(body, signature: signature) do |handler|
     handler.on_user_changed do |user_id, data|
-      user = User.find_by_instagram_id(user_id)
-      @client = Instagram.client(:access_token => user.access_token)
-      text = @client.user_recent_media[0]
-      user.images.create(:data => text)
-      user.green!
-      TWILIO_CLIENT.account.messages.create(
-        :from => ENV['TWILIO_FROM'],
-        :to => user.phone_number,
-        :body => "Thanks for checking in!"
-      )
+      # do something
     end
   end
 end
