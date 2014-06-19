@@ -32,7 +32,7 @@ get '/' do
 end
 
 get '/map' do
-  'Map'
+  erb :map, :locals => { :images => Image.all }
 end
 
 # Verifies subscription (http://instagram.com/developer/realtime/)
@@ -67,6 +67,7 @@ def process_subscription(body, signature)
       min_tag_id = medias.pagination[:min_tag_id]
       $redis.set('min_tag_id', min_tag_id) if min_tag_id
       medias.each do |media|
+        next unless media.location
         Image.create(:data => media, :location => media.location, :images => media.images, :user => media.user)
       end
     end
