@@ -2,6 +2,7 @@ require 'sinatra'
 require 'instagram'
 require 'mongo_mapper'
 require 'active_support'
+require 'redis'
 
 class Image
   include MongoMapper::Document
