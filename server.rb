@@ -31,6 +31,10 @@ get '/' do
   'Hi!'
 end
 
+get '/map' do
+  'Map'
+end
+
 # Verifies subscription (http://instagram.com/developer/realtime/)
 get '/callback' do
   request['hub.challenge'] if request['hub.verify_token'] == ENV['HUB_TOKEN']
@@ -51,8 +55,13 @@ def process_subscription(body, signature)
 
   Instagram.process_subscription(body, signature: signature) do |handler|
     handler.on_tag_changed do |tag_id, _|
-      return if tag_id != ENV['TAG']      
-      medias = Instagram.tag_recent_media(tag_id)
+      return if tag_id != ENV['TAG']
+      if min_tag_id = $redis.get 'min_tag_id'
+        medias = Instagram.tag_recent_media(tag_id, :min_tag_id => min_tag_id)
+      else
+        medias = Instagram.tag_recent_media(tag_id)
+      end
+      
       min_tag_id = medias.pagination[:min_tag_id]
       $redis.set('min_tag_id', min_tag_id) if min_tag_id
       medias.each do |media|
