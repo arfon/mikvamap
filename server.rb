@@ -72,4 +72,5 @@ def process_subscription(body, signature)
       end
     end
   end
+  "Done"
 end
