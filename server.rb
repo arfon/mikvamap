@@ -7,7 +7,11 @@ require 'redis'
 class Image
   include MongoMapper::Document
 
+  key :location, Hash
+  key :images, Hash
+  key :user, Hash
   key :data, Hash
+  
   timestamps!
 
 end
@@ -47,11 +51,13 @@ def process_subscription(body, signature)
 
   Instagram.process_subscription(body, signature: signature) do |handler|
     handler.on_tag_changed do |tag_id, _|
-      return if tag_id != ENV['TAG']
-      medias = Instagram.tag_recent_media(tag_id, min_tag_id: $redis.get('min_tag_id'))
+      return if tag_id != ENV['TAG']      
+      medias = Instagram.tag_recent_media(tag_id)
       min_tag_id = medias.pagination[:min_tag_id]
       $redis.set('min_tag_id', min_tag_id) if min_tag_id
-      puts "min_tag_id: #{min_tag_id}"
+      medias.each do |media|
+        Image.create(:data => media, :location => media.location, :images => media.images, :user => media.user)
+      end
     end
   end
 end
