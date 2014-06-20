@@ -27,6 +27,8 @@ NEW_RELIC_LICENSE_KEY blahblahblah
 
 ## Enough, show me already!
 
+Tag a photo with '#mikva', add a location and post to Instagram. Your photo *should* then turn up on [this map](http://tag-map.herokuapp.com/map). Note, it won't work if your Instagram feed is private.
+
 ![screen shot 2014-06-20 at 07 26 28](https://cloud.githubusercontent.com/assets/4483/3337108/d600b704-f844-11e3-852c-18e86c619a40.png)
 
 
