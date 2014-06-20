@@ -37,12 +37,10 @@
     
     #map { height: 580px; }
     
-    p.title {
+    .title {
       font-size: 11px;
       line-height: 15px;
       font-weight: bolder;
-      margin: 0px;
-      padding: 0px;
       color: blueviolet;
     }
 
@@ -91,7 +89,7 @@
         
         <% images.each do |image| %>
         var marker = L.marker([<%= image.location['latitude'] %>, <%= image.location['longitude'] %>]).addTo(map);
-        marker.bindPopup("<a href='<%= image.data['link'] %>' %><img src=<%= image.images['thumbnail']['url'] %> height='150px' width='150px'></a><p class='caption'><%= image.data['caption']['text'] %></p><p class='title'><%= image.user['username'] %></p>");
+        marker.bindPopup("<a href='<%= image.data['link'] %>' %><img src=<%= image.images['thumbnail']['url'] %> height='150px' width='150px'></a><p class='caption'><%= image.data['caption']['text'] %> &middot; <span class='title'><%= image.user['username'] %></span></p>");
         <% end %>
       </script>
     </div>
