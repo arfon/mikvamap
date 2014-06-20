@@ -76,5 +76,5 @@ def process_subscription(body, signature)
       end
     end
   end
-  "Done"
+  "Done" # FIXME Need to return something otherwise Sinatra barfs
 end
