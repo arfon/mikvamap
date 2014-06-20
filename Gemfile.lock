@@ -31,6 +31,7 @@ GEM
       plucky (~> 0.6.5)
     multi_json (1.10.1)
     multipart-post (2.0.0)
+    newrelic_rpm (3.8.1.221)
     plucky (0.6.6)
       mongo (~> 1.5)
     rack (1.5.2)
@@ -52,6 +53,7 @@ DEPENDENCIES
   bson_ext
   instagram
   mongo_mapper
+  newrelic_rpm
   rake
   redis
   sinatra

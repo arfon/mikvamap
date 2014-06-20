@@ -27,6 +27,10 @@ Instagram.configure do |config|
   config.client_secret = ENV['INSTAGRAM_CLIENT_SECRET']
 end
 
+configure :production do
+  require 'newrelic_rpm'
+end
+
 get '/' do
   'Hi!'
 end
