@@ -45,6 +45,15 @@
       padding: 0px;
     }
 
+    p.caption {
+      font-size: 11px;
+      line-height: 12px;
+      font-weight: bolder;
+      width: 150px;
+      margin: 0px;
+      padding: 0px;
+    }
+    
     .container {
       width: auto;
       max-width: 880px;
@@ -82,7 +91,7 @@
         
         <% images.each do |image| %>
         var marker = L.marker([<%= image.location['latitude'] %>, <%= image.location['longitude'] %>]).addTo(map);
-        marker.bindPopup("<a href='<%= image.data['link'] %>' %><img src=<%= image.images['thumbnail']['url'] %> height='150px' width='150px'></a><p><%= image.data['caption']['text'] %></p><p class='title'><%= image.user['username'] %></p>");
+        marker.bindPopup("<a href='<%= image.data['link'] %>' %><img src=<%= image.images['thumbnail']['url'] %> height='150px' width='150px'></a><p class='caption'><%= image.data['caption']['text'] %></p><p class='title'><%= image.user['username'] %></p>");
         <% end %>
       </script>
     </div>
