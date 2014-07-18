@@ -88,8 +88,12 @@
         }).addTo(map);
         
         <% images.each do |image| %>
-        var marker = L.marker([<%= image.location['latitude'] %>, <%= image.location['longitude'] %>]).addTo(map);
-        marker.bindPopup("<a href='<%= image.data['link'] %>' %><img src=<%= image.images['thumbnail']['url'] %> height='150px' width='150px'></a><p class='caption'><%= image.data['caption']['text'] %> &middot; <span class='title'><%= image.user['username'] %></span></p>");
+        <% if image.location %>
+          var marker = L.marker([<%= image.location['latitude'] %>, <%= image.location['longitude'] %>]).addTo(map);
+          marker.bindPopup("<a href='<%= image.data['link'] %>' %><img src=<%= image.images['thumbnail']['url'] %> height='150px' width='150px'></a>");
+        <% end %>
+
+
         <% end %>
       </script>
     </div>
