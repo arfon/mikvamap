@@ -39,8 +39,8 @@ get '/map' do
   erb :map, :locals => { :images => Image.all, :min_tag_id => $redis.get('min_tag_id') }
 end
 
-get '/test' do
-  'Hi!'
+get '/ping' do
+  'PONG'
 end
 
 # Verifies subscription (http://instagram.com/developer/realtime/)
