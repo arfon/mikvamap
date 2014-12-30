@@ -14,15 +14,15 @@ The plan is to use this application over the summer of 2014 in Chicago to highli
 Heroku is your friend with a [MongoHQ addon](https://addons.heroku.com/mongohq) and [Redis To Go](https://addons.heroku.com/redistogo). We're also using the [New Relic](https://addons.heroku.com/newrelic) addon for monitoring. There's a bunch of environment variables you need to configure:
 
 ```
-CLIENT_ID:            instagram-client-id
-CLIENT_SECRET:        instagram-secret
-DOMAIN:               my-app.herokuapp.com
-HUB_TOKEN:            a-secure-token
-MONGOHQ_URL:          mongodb://blah:blah@nosql.rules.com:1234/awesomeapp (set by the addon)
-TAG                   'mikva'
-REDISTOGO_URL         redis://redistogo... (also set by the addon)
-NEW_RELIC_APP_NAME    Tag Map
-NEW_RELIC_LICENSE_KEY blahblahblah
+INSTAGRAM_CLIENT_ID:      instagram-client-id
+INSTAGRAM_CLIENT_SECRET:  instagram-secret
+DOMAIN:                   my-app.herokuapp.com
+HUB_TOKEN:                a-secure-token
+MONGOHQ_URL:              mongodb://blah:blah@nosql.rules.com:1234/awesomeapp (set by the addon)
+TAG                       'mikva'
+REDISTOGO_URL             redis://redistogo... (also set by the addon)
+NEW_RELIC_APP_NAME        Tag Map
+NEW_RELIC_LICENSE_KEY     blahblahblah
 ```
 
 ## Enough, show me already!
