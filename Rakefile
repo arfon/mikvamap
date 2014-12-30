@@ -9,12 +9,12 @@ task :configure do
 end
 
 desc 'List all subscriptions'
-task subs: :configure do
+task :subs => :configure do
   Instagram.subscriptions.each { |sub| p sub }
 end
 
 desc 'Create a Instagram tag subscription'
-task create_sub: :configure do
+task :create_sub => :configure do
   Instagram.create_subscription(
     'tag',
     "http://#{ENV['DOMAIN']}/callback",
