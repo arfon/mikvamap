@@ -32,11 +32,15 @@ configure :production do
 end
 
 get '/' do
-  'Hi!'
+  erb :map, :locals => { :images => Image.all, :min_tag_id => $redis.get('min_tag_id') }
 end
 
 get '/map' do
   erb :map, :locals => { :images => Image.all, :min_tag_id => $redis.get('min_tag_id') }
+end
+
+get '/test' do
+  'Hi!'
 end
 
 # Verifies subscription (http://instagram.com/developer/realtime/)

@@ -8,12 +8,12 @@
     <meta name="author" content="">
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
 
-    <title>Tag Map</title>
+    <title>#DMCLetmebe</title>
 
     <!-- Bootstrap core CSS -->
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-    
+
     <style>
     /* Sticky footer styles
     -------------------------------------------------- */
@@ -25,7 +25,7 @@
       /* Margin bottom by footer height */
       margin-bottom: 60px;
     }
-    
+
     #footer {
       position: absolute;
       bottom: 0;
@@ -34,9 +34,9 @@
       height: 60px;
       background-color: #f5f5f5;
     }
-    
+
     #map { height: 580px; }
-    
+
     .title {
       font-size: 11px;
       line-height: 15px;
@@ -51,7 +51,7 @@
       margin: 0px;
       padding: 5px 0px;
     }
-    
+
     .container {
       width: auto;
       max-width: 880px;
@@ -60,12 +60,12 @@
     .container .text-muted {
       margin: 20px 0;
     }
-    
+
     a.actions{
       float: right;
       text-decoration: none;
     }
-    
+
     </style>
   </head>
 
@@ -73,35 +73,32 @@
     <!-- Begin page content -->
     <div class="container">
       <div class="page-header">
-        <h1>Tag Map</h1>
+        <h1>#DMCLetmebe</h1>
       </div>
 
-      <p class="lead">Tag an Instagram photo with #mikva and and location and it should show up here.</p>
-      
+      <p class="lead">Tag an Instagram photo with #dmcletmebe <strong>and a location<strong> and it should show up here.</p>
+
       <div id="map"></div>
-      
+
       <script>
         var map = L.map('map').setView([41.88, -87.65], 12);
         L.tileLayer('http://{s}.tiles.mapbox.com/v3/arfon.ii8k0h60/{z}/{x}/{y}.png', {
                       attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
                       maxZoom: 18
         }).addTo(map);
-        
+
         <% images.each do |image| %>
-        <% if image.location %>
-          var marker = L.marker([<%= image.location['latitude'] %>, <%= image.location['longitude'] %>]).addTo(map);
-          marker.bindPopup("<a href='<%= image.data['link'] %>' %><img src=<%= image.images['thumbnail']['url'] %> height='150px' width='150px'></a>");
-        <% end %>
-
-
+          <% if image.location %>
+            var marker = L.marker([<%= image.location['latitude'] %>, <%= image.location['longitude'] %>]).addTo(map);
+            marker.bindPopup("<a href='<%= image.data['link'] %>' %><img src=<%= image.images['thumbnail']['url'] %> height='150px' width='150px'></a>");
+          <% end %>
         <% end %>
       </script>
     </div>
 
-
     <div id="footer">
       <div class="container">
-        <p class="text-muted">Tag Map &middot; <a href="https://github.com/arfon/tagmap">GitHub</a> &middot; <%= min_tag_id %></p>
+        <p class="text-muted">Tag Map &middot; <a href="https://github.com/arfon/mikvamap">GitHub</a> &middot; <%= min_tag_id %></p>
       </div>
     </div>
   </body>
