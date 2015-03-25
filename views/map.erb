@@ -76,12 +76,21 @@
         <h1>#DMCletmebe</h1>
       </div>
 
-      <p class="lead">Tag an Instagram photo with #dmcletmebe <strong>and a location</strong> and it should show up here.</p>
+      <p class="lead">The #DMCletmebe project will serve as a visual representation of disproportionate
+        minority contact in action. Disproportionate Minority Contact (DMC) is a term referring to the
+        imbalance of minority youth that are stopped, frisked, arrested, harassed, etc.
+        by law enforcement and the juvenile justice system. Black and Hispanic youth are overly represented
+        (98% of the population in the Juvenile Temporary Detention Center) in Cook County's juvenile justice
+        system. This tool aims to bring awareness to the issue of DMC by mapping out where people are being
+        stopped by police and why.
+      </p>
+
+      <p>Tag an Instagram photo with #dmcletmebe <strong>and a location</strong> and it should show up here.</p>
 
       <div id="map"></div>
 
       <script>
-        var map = L.map('map').setView([41.88, -87.65], 12);
+        var map = L.map('map').setView([41.88, -87.65], 11);
         L.tileLayer('http://{s}.tiles.mapbox.com/v3/arfon.ii8k0h60/{z}/{x}/{y}.png', {
                       attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
                       maxZoom: 18
